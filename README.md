@@ -1,3 +1,7 @@
 # liri-node-app
 
-images/ezgif.com-optimize.gif
+LIRI is a Language Interpretation and Recognition Interface. LIRI will be a command line node app that takes in parameters and gives you back data.
+
+# DEMO
+
+https://github.com/aviolan/liri-node-app/blob/master/images/ezgif.com-optimize.gif
