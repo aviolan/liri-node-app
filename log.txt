@@ -1,1 +1,1 @@
-spotify-this-song,brand
+spotify-this-song,provider
