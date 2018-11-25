@@ -4,4 +4,4 @@ LIRI is a Language Interpretation and Recognition Interface. LIRI will be a comm
 
 # DEMO
 
-https://github.com/aviolan/liri-node-app/blob/master/images/ezgif.com-optimize.gif
+<img src="https://github.com/aviolan/liri-node-app/blob/master/images/ezgif.com-optimize.gif" alt="demo" style="max-width:100%;">
