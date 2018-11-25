@@ -11,8 +11,17 @@ LIRI is a Language Interpretation and Recognition Interface. LIRI will be a comm
 LIRI commands:
 
 <ul>
-    <li>concert-this "artist"</li>
-    <li>spotify-this-song "song name"</li>
-    <li>movie-this "name of movie"</li>
-    <li>do-what-it-says</li>
+    <li><code>concert-this "artist"</code> - utilized Bands In Town API and returns Artists' upcoming concerts by listing the name of the venue, the location, and date of the event</li>
+    <li><code>spotify-this-song "song name"</code> - utilizes Spotify API and returns Artist name, Song name, Link to preview of song, and album. No Song provided defaults to "The Sign" by Ace of Base</li>
+    <li><code>movie-this "name of movie"</code> - utilizes OMDB API and returns Title, Year, IMDB/RT Rating, Country of Origin, Language, Plot Summary, and Actors. No movie provided defaults to the movie "Mr. Nobody"</li>
+    <li><code>do-what-it-says</code> - reads "random.txt" file and executes command inside file</li>
 </ul>
+
+Also logs most recent command into log.txt
+
+# Languages Used
+
+Javascript
+Node.js
+JSON
+AXIOS
