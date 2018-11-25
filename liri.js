@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 var keys = require("./keys.js");
-var Spotify = require("node-spotify-api");
+var Spotify = require('node-spotify-api');
 var spotify = new Spotify(keys.spotify);
 var fs = require("fs");
 var request = require("request");
@@ -10,7 +10,7 @@ var moment = require("moment");
 var user = process.argv[2];
 var action = process.argv[3];
 
-function liri() {
+function liri(user, action) {
     switch (user) {
         case "concert-this":
             bandsInTown(action);
@@ -34,7 +34,7 @@ function liri() {
     }
 };
 
-fs.writeFile("log.txt", action + "," + value, function(error){
+fs.writeFile("log.txt", user + "," + action, function(error){
     if (error) {
         return console.log(error);
     }
@@ -44,10 +44,10 @@ fs.writeFile("log.txt", action + "," + value, function(error){
 
 liri(user, action)
 
-function bandsInTown(artist) {
-    request ("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp", function (error, response, body) {
-    
-        if (!error && response.StatusCode === 200) {
+function bandsInTown(bandName) {
+    request("https://rest.bandsintown.com/artists/" + bandName + "/events?app_id=codingbootcamp", function (error, response, body) {
+
+        if (!error && response.statusCode === 200) {
             var objectBody = JSON.parse(body);
             for (i = 0; i < objectBody.length; i++) {
                 console.log("Venue: " + objectBody[i].venue.name);
@@ -57,7 +57,7 @@ function bandsInTown(artist) {
         } else {
             console.log(error);
         }
-});
+    });
 }
 
 function spotifySong(songName) {
@@ -69,7 +69,7 @@ function spotifySong(songName) {
 
         .then(function(response) {
             var songData = ""
-            songData += "Artist: " + response.tracks.items[0].map(arist => artist.name).join(", ") + "\n";
+            songData += "Artist: " + response.tracks.items[0].artists.map(artist => artist.name).join(", ") + "\n";
             songData += "Song: " + response.tracks.items[0].name + "\n";
             songData += "URL: " + response.tracks.items[0].album.external_urls.spotify + "\n";
             songData += "Album: " + response.tracks.items[0].album.name;
@@ -99,19 +99,20 @@ function omdbMovie(movieName) {
     });
 }
 
-function searchText(fileName) {
-    fs.readFile(fileName, "utf8", function(error, data) {
+function searchText(random) {
+    fs.readFile("random.txt", "utf8", function(error, data) {
 
         if (error) {
-            return console.log(error);
-        } 
-
+          return console.log(error);
+        }
+      
         console.log(data);
-
+      
         var dataArr = data.split(",");
-
+      
         console.log(dataArr);
 
-        liri(dataArr[0], dataArr[1]);
-    });
+        liri(dataArr[0], dataArr[1]);        
+
+      });
 }
